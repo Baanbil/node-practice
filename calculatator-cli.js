@@ -1,3 +1,4 @@
+const fs = require("fs")
 const readline = require("readline");
 const rl = readline.createInterface({
   input: process.stdin,
@@ -36,6 +37,8 @@ function askQuestion() {
         }
 
         console.log("Result:", result);
+	const log = `${num1} ${op} ${num2} = ${result}\n`
+	fs.appendFileSync("history.txt", log, "utf8")
         console.log("--------------------------");
         askQuestion(); // loop back
       });
